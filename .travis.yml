@@ -1,0 +1,32 @@
+language: python
+sudo: required
+dist: trusty
+
+# command to install dependencies
+install:
+  - pip install virtualenv git+https://github.com/spacetelescope/asv
+
+# before_script:
+
+script:
+    - asv run
+
+# runs independent of 'script' failure/success
+# after_script:
+
+
+notifications:
+  email:
+    on_success: change
+    on_failure: change
+
+after_success:
+- coveralls
+
+branches:
+  except:
+    - gh-pages
+
+python:
+  - "2.7"
+  - "3.5"
