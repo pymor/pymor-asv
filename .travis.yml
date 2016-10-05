@@ -6,7 +6,8 @@ dist: trusty
 install:
   - pip install virtualenv git+https://github.com/spacetelescope/asv
 
-# before_script:
+before_script:
+    - asv machine --machine "Travis Trusty GCE" --os "Ubuntu Trusty Tahr 14.04" --arch x86_64 --cpu "Virtualized 2 Core" --ram '2GB'
 
 script:
     - asv run
